@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Graph Visualiser</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="https://kit.fontawesome.com/b9a907eb86.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="maze-algo-container">
+            <div class="container-header">Maze Generation Algorithm</div>
+            <div>
+                <div id="maze-algo-dropdown" class="dropdown">
+                    <div class="select">
+                        <span>Select Algorithm</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <input id="maze-algo-input" type="hidden" name="maze-algo-input">
+                    <ul class="dropdown-menu">
+                        <li value="0">Recursive Backtracking</li>
+                        <li value="1">Kruskal</li>
+                    </ul>
+                </div>
+                <button id="generate-maze-btn">Generate Maze</button>
+            </div>
+        </div>
+        <div class="path-algo-container">
+            <div class="container-header">Shortest Path Algorithm</div>
+            <div>
+                <div id="path-algo-dropdown" class="dropdown">
+                    <div class="select">
+                        <span>Select Algorithm</span>
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <input id="visualize-algo-input" type="hidden" name="maze-algo-input">
+                    <ul class="dropdown-menu">
+                        <li value="0">Breadth-first Search</li>
+                        <li value="1">Dijkstra</li>
+                        <li value="2">A* (euclidean)</li>
+                        <li value="3">A* (manhattan)</li>
+                    </ul>
+                </div>
+                <button id="visualize-btn">Visualize</button>
+            </div>
+        </div>
+        <div>
+            <div class="container-header">Others</div>
+            <button id="clear-wall-btn">Clear Wall</button>
+            <button id="clear-result-btn">Clear Result</button>
+            <button id="clear-all-btn">Clear All</button>
+        </div>
+    </nav>
+    <div class="info-container">
+        <div class="legend-container">
+            <div class="legend"></div> Empty
+        </div>
+        <div class="legend-container">
+            <div class="legend legend-wall"></div> Wall
+        </div>
+        <div class="legend-container">
+            <div class="legend legend-visited"></div> Visited
+        </div>
+        <div class="legend-container">
+            <div class="legend legend-path"></div> Shortest Path
+        </div>
+        <div class="additional-info">
+            <div>Graph is <b>unweighted</b>, so BFS and Dijkstra will give similar result</div>
+            <div>No additional library used (except jquery)</div>
+        </div>
+    </div>
+
+    <div id="grid-container" class="grid-container">
+        <table id="grid-table" class="table"></table>
+    </div>
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
