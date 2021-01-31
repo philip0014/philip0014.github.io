@@ -1,0 +1,54 @@
+html, body {
+    background-color: #252a34;
+    color: #eaeaea;
+    font-family: 'Roboto', sans-serif;
+}
+
+.intro-container {
+    position: relative;
+}
+
+.intro {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    white-space: normal;
+    max-width: 600px;
+}
+
+.name-intro {
+    color: #08d9d6;
+    font-size: 55px;
+}
+
+.animate-intro {
+    opacity: 0;
+}
+
+.quote-intro {
+    font-size: 13px;
+    color: rgba(234, 234, 234, 0.6);
+}
+
+.arrow-intro-container {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1.5rem;
+    color: rgba(234, 234, 234, 0.6);
+    text-align: center;
+}
+
+.arrow-intro {
+    cursor: pointer;
+}
+
+.arrow-intro > svg {
+    width: 36px;
+    height: 36px;
+}
+
+@media only screen and (max-width: 991px) {
+    .intro {
+        max-width: 100%;
+    }
+}
