@@ -100,10 +100,14 @@ td {
 
 .bird {
     background-image: url("./assets/bird.svg");
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .food {
     background-image: url("./assets/pizza.svg");
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .visited {
