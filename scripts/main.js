@@ -19,44 +19,31 @@ $(document).ready(_ => {
     }
 
     function initAnimations() {
-        anime({
-            targets: document.getElementsByClassName(constants.ANIMATE_INTRO),
-            translateY: [25, 0],
-            opacity: 1,
-            easing: 'linear',
-            duration: 500,
-            delay: anime.stagger(300, {start: 200})
-        });
+        for (const key of Object.keys(containerPositions)) {
+            let currentPosition = window.pageYOffset + window.innerHeight;
+            if (currentPosition > containerPositions[key]) {
+                animate(key);
+                containerShown[key] = true;
+            }
+        }
 
-        let observer = new IntersectionObserver(function (entries, _) {
-            entries.forEach(entry => {
-                if (!containerShown[entry.target.id] && entry.isIntersecting) {
-                    console.log(entry.target.id);
-                    anime({
-                        targets: document.getElementsByClassName(containerClass[entry.target.id]),
-                        opacity: 1,
-                        easing: 'linear',
-                        duration: 500,
-                        delay: anime.stagger(300, {start: 200})
-                    });
+        $(window).scroll(_ => {
+            for (const key of Object.keys(containerPositions)) {
+                let currentPosition = window.pageYOffset + window.innerHeight;
+                if (!containerShown[key] && currentPosition > containerPositions[key]) {
+                    animate(key);
+                    containerShown[key] = true;
                 }
-            });
-        }, {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5
+            }
         });
-
-        observer.observe(document.getElementById(constants.ABOUT_CONTAINER));
-        // observer.observe(document.getElementById(constants.EXPERIENCE_CONTAINER));
     }
 
     function initActionItems() {
-        let experienceBlibli = $('#experience-blibli');
-        let experienceBinus = $('#experience-binus');
+        let experienceBlibli = $(`#${constants.EXPERIENCE_BLIBLI}`);
+        let experienceBinus = $(`#${constants.EXPERIENCE_BINUS}`);
 
-        let blibliStory = $('#blibli-story');
-        let binusStory = $('#binus-story');
+        let blibliStory = $(`#${constants.BLIBLI_STORY}`);
+        let binusStory = $(`#${constants.BINUS_STORY}`);
 
         experienceBlibli.click(() => {
             experienceBinus.removeClass(constants.SELECTED_STORY);
@@ -73,6 +60,23 @@ $(document).ready(_ => {
             blibliStory.removeClass(constants.ACTIVE_STORY);
             binusStory.addClass(constants.ACTIVE_STORY);
         });
+    }
+
+    function animate(key) {
+        let animateObj = {
+            targets: document.getElementsByClassName(containerClass[key]),
+            opacity: 1,
+            easing: 'linear',
+            duration: 500,
+            delay: anime.stagger(300, {start: 200})
+        };
+
+        if (key === constants.INTRO_CONTAINER) {
+            animateObj['translateY'] = [25, 0];
+            anime(animateObj);
+        } else {
+            anime(animateObj);
+        }
     }
 
     init();
