@@ -16,6 +16,8 @@ $(document).ready(_ => {
     function init() {
         initAnimations();
         initActionItems();
+
+        $('#current-year').text(new Date().getFullYear());
     }
 
     function initAnimations() {
