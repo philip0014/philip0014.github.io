@@ -2,8 +2,14 @@ import anime from './anime.es.js';
 import constants from './constants.js';
 
 $(document).ready(_ => {
+    let containerPositions = {};
+    containerPositions[constants.INTRO_CONTAINER] = $(`#${constants.INTRO_CONTAINER}`).offset().top;
+    containerPositions[constants.ABOUT_CONTAINER] = $(`#${constants.ABOUT_CONTAINER}`).offset().top;
+    containerPositions[constants.EXPERIENCE_CONTAINER] = $(`#${constants.EXPERIENCE_CONTAINER}`).offset().top;
+
     let containerShown = {};
     let containerClass = {};
+    containerClass[constants.INTRO_CONTAINER] = constants.ANIMATE_INTRO;
     containerClass[constants.ABOUT_CONTAINER] = constants.ANIMATE_ABOUT;
     containerClass[constants.EXPERIENCE_CONTAINER] = constants.ANIMATE_EXPERIENCE;
 
