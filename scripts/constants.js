@@ -2,6 +2,7 @@ export default {
     ANIMATE_INTRO: 'animate-intro',
     ANIMATE_ABOUT: 'animate-about',
     ANIMATE_EXPERIENCE: 'animate-experience',
+    ANIMATE_PROJECT: 'animate-project',
 
     EXPERIENCE_BLIBLI: 'experience-blibli',
     EXPERIENCE_BINUS: 'experience-binus',
@@ -13,5 +14,6 @@ export default {
 
     INTRO_CONTAINER: 'intro-container',
     ABOUT_CONTAINER: 'about-container',
-    EXPERIENCE_CONTAINER: 'experience-container'
+    EXPERIENCE_CONTAINER: 'experience-container',
+    PROJECT_CONTAINER: 'project-container'
 }

@@ -6,12 +6,14 @@ $(document).ready(_ => {
     containerPositions[constants.INTRO_CONTAINER] = $(`#${constants.INTRO_CONTAINER}`).offset().top;
     containerPositions[constants.ABOUT_CONTAINER] = $(`#${constants.ABOUT_CONTAINER}`).offset().top;
     containerPositions[constants.EXPERIENCE_CONTAINER] = $(`#${constants.EXPERIENCE_CONTAINER}`).offset().top;
+    containerPositions[constants.PROJECT_CONTAINER] = $(`#${constants.PROJECT_CONTAINER}`).offset().top;
 
     let containerShown = {};
     let containerClass = {};
     containerClass[constants.INTRO_CONTAINER] = constants.ANIMATE_INTRO;
     containerClass[constants.ABOUT_CONTAINER] = constants.ANIMATE_ABOUT;
     containerClass[constants.EXPERIENCE_CONTAINER] = constants.ANIMATE_EXPERIENCE;
+    containerClass[constants.PROJECT_CONTAINER] = constants.ANIMATE_PROJECT;
 
     function init() {
         initAnimations();
@@ -32,6 +34,7 @@ $(document).ready(_ => {
         $(window).scroll(_ => {
             for (const key of Object.keys(containerPositions)) {
                 let currentPosition = window.pageYOffset + window.innerHeight;
+                // if (key === constants.PROJECT_CONTAINER) console.log(currentPosition, containerPositions[key]);
                 if (!containerShown[key] && currentPosition > containerPositions[key]) {
                     animate(key);
                     containerShown[key] = true;
