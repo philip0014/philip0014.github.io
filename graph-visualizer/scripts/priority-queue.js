@@ -30,11 +30,11 @@ export default class PriorityQueue {
         this._heap.pop();
 
         let node = 0;
-        while (
-            (this._left(node) < this._heap.length && this._compare(this._left(node), node)) ||
-            (this._right(node) < this._heap.length && this._compare(this._right(node), node))
-            ) {
-            let maxChild = (this._right(node) < this._heap.length && this._compare(this._right(node), this._left(node))) ? this._right(node) : this._left(node);
+        while ((this._left(node) < this._heap.length && this._compare(this._left(node), node))
+            || (this._right(node) < this._heap.length && this._compare(this._right(node), node))) {
+            let maxChild = (this._right(node) < this._heap.length && this._compare(this._right(node), this._left(node)))
+                ? this._right(node)
+                : this._left(node);
             this._swap(node, maxChild);
             node = maxChild;
         }
