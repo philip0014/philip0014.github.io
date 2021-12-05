@@ -95,6 +95,17 @@ function initAudioControl() {
         }
     });
 
+    audioSlider[0].addEventListener('touchstart', () => {
+        isSliderChanging = true;
+    });
+
+    audioSlider[0].addEventListener('touchend', () => {
+        isSliderChanging = false;
+        if (proposedTime !== null) {
+            audioController.setCurrentTime(proposedTime);
+        }
+    });
+
     audioSlider[0].addEventListener('input', () => {
         if (isSliderChanging) {
             let value = audioSlider.val();
